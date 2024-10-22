@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, FormEvent, FormEventHandler, useCallback, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useCallback, useState } from "react";
 import styles from "./header.module.css";
 
 interface HeaderProps {

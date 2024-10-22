@@ -1,50 +1,69 @@
-# React + TypeScript + Vite
+# Приложение для поиска фильмов
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Данный проект представляет собой приложение для поиска фильмов, созданное с использованием React, TypeScript, Redux и Vite. Приложение позволяет пользователям искать фильмы по названию и просматривать результаты с помощью пагинации.
 
-Currently, two official plugins are available:
+## Функционал
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Поиск фильмов**: Пользователи могут искать фильмы, вводя название фильма.
+- **Пагинация**: Результаты поиска разбиты на страницы для удобного просмотра.
+- **Вывод ошибок**: В случае ошибок при выполнении поиска или загрузке данных, пользователю отображается соответствующее сообщение.
+- **Вывод приветствия**: При первом запуске отображается экран приветствия с инструкцией по использованию.
+- **Вывод прелоадера**: Во время выполнения поиска или загрузки данных отображается индикатор загрузки.
 
-## Expanding the ESLint configuration
+## Структура проекта
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- `/src/components`: Компоненты интерфейса.
+- `/src/context`: Контекст для управления глобальными состояниями (представлен для примера).
+- `/src/services/helpers.ts`: Утилиты и вспомогательные функции.
+- `/src/services/constants.ts`: Константы, используемые в приложении.
+- `/src/store/api`: RTK Query (представлен для примера).
+- `/src/store/slices`: Слайсы и селекторы Redux для управления состояниями.
+- `/src/styles`: Глобальные стили для приложения.
+- `/src/types`: Типы.
 
-- Configure the top-level `parserOptions` property like this:
+## Начало работы
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Предварительные требования
+
+Для работы с проектом необходимо установить Node.js. Скачать его можно по [ссылке](https://nodejs.org/).
+
+### Установка
+
+1. Клонируйте репозиторий:
+
+```bash
+  git clone https://github.com/petrpridanov/upper-setup.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Перейдите в папку с проектом:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+cd upper-setup
 ```
+
+3. Установите зависимости:
+
+```bash
+  npm install
+```
+
+### Запуск приложения
+
+1. Запустите сервер разработки:
+
+```bash
+npm run dev
+```
+
+2. Откройте браузер и перейдите по адресу:
+
+```bash
+http://localhost:5173/
+```
+
+## Скрипты NPM
+
+- `npm run dev`: Запускает сервер разработки.
+- `npm run build`: Собирает проект для продакшн.
+- `npm run lint`: Проверяет код на ошибки линтинга.
+- `npm run preview`: Предпросмотр собранного приложения перед деплоем.

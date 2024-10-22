@@ -30,7 +30,7 @@ export const Pagination: FC<PaginationProps> = memo(({ totalResults, activePage,
     } else {
       setSiblings(newSiblings);
     }
-  }, [totalPages, activePage, DEFAULT_COUNT_SIBLINGS, createSiblings]);
+  }, [totalPages, activePage, newSiblings]);
 
   return (
     <div className={styles.pagination}>

@@ -38,9 +38,8 @@ export const appSlice = createSlice({
       state.isSearch = true;
     },
     setIsLoading(state) {
-      state.error.isError = false;
       state.isLoading = true;
-      state.error.message = "";
+      state.error = initialState.error;
     },
     setIsError(state, { payload }) {
       state.error.isError = true;
@@ -49,10 +48,9 @@ export const appSlice = createSlice({
     },
     setData(state, { payload }) {
       state.data = payload;
-      state.error.isError = false;
       state.isLoading = false;
       state.isSearch = true;
-      state.error.message = "";
+      state.error = initialState.error;
     },
     setPage(state, { payload }) {
       state.page = payload;

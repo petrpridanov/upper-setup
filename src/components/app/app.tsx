@@ -1,6 +1,13 @@
-import { FormEvent, useCallback } from "react";
+import { useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { setData, setIsError, setSearchString, clearData, setPage } from "../../store/slices/app/appSlice";
+import {
+  setData,
+  setIsError,
+  setSearchString,
+  clearData,
+  setPage,
+  setIsLoading,
+} from "../../store/slices/app/appSlice";
 import {
   getError,
   getIsLoading,
@@ -38,23 +45,27 @@ export const App = () => {
     onSend(string);
   };
 
-  const onSend = useCallback(async (string: string, page: number = 1) => {
-    try {
-      const res = await sendData(string, page);
+  const onSend = useCallback(
+    async (string: string, page: number = 1) => {
+      try {
+        dispatch(setIsLoading());
+        const res = await sendData(string, page);
 
-      if (!res.ok) {
-        throw new Error("Что то не так");
-      }
+        if (!res.ok) {
+          throw new Error("Что то не так");
+        }
 
-      const result: IData = await res.json();
-      if (result.Response === ResponseTypes.false) {
-        throw new Error(result.Error);
+        const result: IData = await res.json();
+        if (result.Response === ResponseTypes.false) {
+          throw new Error(result.Error);
+        }
+        dispatch(setData(result));
+      } catch (e) {
+        if (e instanceof Error) dispatch(setIsError(e.message));
       }
-      dispatch(setData(result));
-    } catch (e: any) {
-      dispatch(setIsError(e.message));
-    }
-  }, []);
+    },
+    [dispatch]
+  );
 
   const handlerOnChangePage = async (page: number) => {
     await dispatch(setPage(page));
@@ -64,11 +75,17 @@ export const App = () => {
   return (
     <>
       <Header onSubmit={handlerOnFind} />
+      {console.log(isLoading)}
       {error.isError && !isLoading && (
         <p className={`txt-22-normal ${styles.message} ${styles.error}`}>{error.message}</p>
       )}
-      {!error.isError && isLoading && <p className={`txt-22-normal ${styles.message}`}>Загрузка</p>}
       {data.totalResults && <Info searchString={searchString} totalResults={data.totalResults} />}
+      {!error.isError && isLoading && (
+        <p className={`txt-22-normal ${styles.message}`}>
+          <span>Загрузка</span>
+          <div className="loader"></div>
+        </p>
+      )}
       {!error.isError && !isLoading && isSearch && data.Search && data.Search.length > 0 && <Content data={data} />}
       {data.totalResults && (
         <Pagination totalResults={data.totalResults} activePage={page} onPageChange={handlerOnChangePage} />

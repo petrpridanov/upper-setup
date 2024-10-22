@@ -1,5 +1,5 @@
 import { ISiblings, PaginationTypes } from "../types";
-import { API_URL, DEFAULT_COUNT_SIBLINGS, RESULTS_PER_PAGE } from "./constants";
+import { API_URL, RESULTS_PER_PAGE } from "./constants";
 
 export const sendData = async (searchString: string, page: number = 1) => {
   return await fetch(`${API_URL}&s=${searchString}&page=${page}`);
