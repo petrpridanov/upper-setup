@@ -16,6 +16,7 @@ import {
   getSearchPage,
   getSearchString,
 } from "../../store/slices/app/selectors";
+import { Layout } from "../layout/layout";
 import { Content } from "../content/content";
 import { Header } from "../header/header";
 import { Info } from "../info/info";
@@ -73,9 +74,8 @@ export const App = () => {
   };
 
   return (
-    <>
+    <Layout>
       <Header onSubmit={handlerOnFind} />
-      {console.log(isLoading)}
       {error.isError && !isLoading && (
         <p className={`txt-22-normal ${styles.message} ${styles.error}`}>{error.message}</p>
       )}
@@ -93,6 +93,6 @@ export const App = () => {
       {!isSearch && !error.isError && !isLoading && (
         <p className={`txt-22-normal ${styles.message}`}>Для продолжения введите название фильма</p>
       )}
-    </>
+    </Layout>
   );
 };

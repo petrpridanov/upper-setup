@@ -20,9 +20,16 @@ export const Header: FC<HeaderProps> = ({ onSubmit }) => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logoWrapper}>
-        <img src="./assets/logo.png" />
+      <div className={styles.headerContainer}>
+        <div className={styles.logoWrapper}>
+          <img src="./assets/logo.png" />
+        </div>
+        <div className={styles.signIn}>
+          <img src="./assets/svg/user.svg" alt="user icon" />
+          <p className={`txt-14-normal ${styles.signInName}`}>Your Name</p>
+        </div>
       </div>
+
       <div className={styles.inputWrapper}>
         <form id="searchForm" onSubmit={handlerOnSubmitForm}>
           <input
@@ -37,10 +44,6 @@ export const Header: FC<HeaderProps> = ({ onSubmit }) => {
             <img src="./assets/svg/search.svg" alt="search icon" />
           </button>
         </form>
-      </div>
-      <div className={styles.signIn}>
-        <img src="./assets/svg/user.svg" alt="user icon" />
-        <p className={`txt-14-normal ${styles.signInName}`}>Your Name</p>
       </div>
     </header>
   );

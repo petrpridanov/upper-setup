@@ -31,3 +31,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@media screen and (max-width: 816px) {
+  .card,
+  .cardPoster {
+    width: 100%;
+  }
+}

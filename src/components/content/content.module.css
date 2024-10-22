@@ -1,6 +1,36 @@
 .content {
   margin-top: 55px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 245px);
   gap: 56px 53px;
+}
+
+@media screen and (max-width: 1280px) {
+  .content {
+    margin-top: 55px;
+    display: grid;
+    grid-template-columns: repeat(3, 245px);
+    justify-content: center;
+    gap: 24px 24px;
+  }
+}
+
+@media screen and (max-width: 816px) {
+  .content {
+    margin-top: 55px;
+    display: grid;
+    grid-template-columns: repeat(2, 245px);
+    justify-content: center;
+    gap: 24px 24px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .content {
+    margin-top: 55px;
+    display: grid;
+    grid-template-columns: repeat(1, 245px);
+    justify-content: center;
+    gap: 24px 24px;
+  }
 }
