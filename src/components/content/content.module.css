@@ -1,0 +1,6 @@
+.content {
+  margin-top: 55px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 56px 53px;
+}

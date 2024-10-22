@@ -1,0 +1,33 @@
+.card {
+  width: 245px;
+  height: 381px;
+}
+
+.cardPosterWrapper {
+  max-height: 270px;
+  border-radius: 10px;
+  border: 1px solid #6627ff;
+  position: relative;
+  overflow: hidden;
+}
+
+.cardPoster {
+  width: 245px;
+  height: 270px;
+  object-fit: cover;
+}
+
+.cardCoverPoster {
+  object-fit: contain;
+}
+
+.cardInfo {
+  margin-top: 23px;
+  margin-left: 13px;
+}
+
+.cardTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,15 @@
+.resultInfo {
+  display: flex;
+}
+
+.resultCount {
+  margin-top: 3px;
+  margin-left: 17px;
+  border-radius: 5px;
+  background: #6627ff;
+  display: flex;
+  padding: 5px 15px;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-white);
+}
