@@ -9,8 +9,8 @@ interface ContentProps {
 
 export const Content: FC<ContentProps> = memo(({ data }) => (
   <div className={styles.content}>
-    {data.Search.map((item) => (
-      <Item {...item} />
+    {data.Search.map((item, idx) => (
+      <Item {...item} key={idx} />
     ))}
   </div>
 ));
